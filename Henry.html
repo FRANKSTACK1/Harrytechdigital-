@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Henry | Harrytechdigital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus+Jakarta+Sans', sans-serif;
+            background-color: #020617;
+            color: white;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ocean-gradient {
+            background: radial-gradient(circle at center, #075985 0%, #020617 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+        }
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-particles" id="particleContainer"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="ego.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="musicControl" class="fixed top-6 right-6 z-50 cursor-pointer p-3 glass rounded-full hidden flex items-center justify-center w-12 h-12">
+        <span id="musicIcon" class="text-xl">🎵</span>
+    </div>
+
+    <section id="landing" class="h-screen w-full flex flex-col items-center justify-center ocean-gradient relative z-10">
+        <div class="text-center">
+            <h2 class="text-teal-400 font-semibold tracking-[0.3em] mb-4 uppercase text-sm">A Special Tribute</h2>
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-8 text-glow">Harrytechdigital</h1>
+            <button id="startBtn" class="px-10 py-4 bg-sky-500 hover:bg-sky-400 transition-all rounded-full font-bold shadow-[0_0_40px_rgba(14,165,233,0.5)] transform hover:scale-105 active:scale-95">
+                Tap to Begin 🎉
+            </button>
+        </div>
+    </section>
+
+    <main id="mainContent" class="hidden relative z-10">
+        <section class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-[url('harry1.webp')] bg-cover bg-center">
+                <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"></div>
+            </div>
+            <div class="relative z-10 text-center px-6 reveal">
+                <h2 class="text-3xl md:text-5xl font-light mb-4">Hey Big Bro…</h2>
+                <h1 class="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-white to-teal-300">Today is All About You 💙</h1>
+                <p class="text-xl text-slate-300 mt-6 font-light max-w-2xl mx-auto">A small surprise for someone truly special who leads with heart and tech.</p>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 max-w-4xl mx-auto reveal">
+            <div class="glass p-12 rounded-[2rem] text-center shadow-2xl">
+                <p class="text-2xl md:text-4xl font-medium leading-relaxed italic text-slate-100">
+                    "Henry… you’re not just my elder brother, you’re someone I look up to every single day. <br><br>
+                    Your strength, your hustle, your mindset… it inspires me more than you know."
+                </p>
+                <div class="mt-8 h-1 w-24 bg-sky-500 mx-auto rounded-full"></div>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div class="reveal group">
+                <div class="relative overflow-hidden rounded-3xl shadow-2xl border border-white/10">
+                    <img src="harry2.webp" alt="Henry" class="transition-transform duration-700 group-hover:scale-110">
+                </div>
+            </div>
+            <div class="reveal">
+                <h3 class="text-4xl md:text-5xl font-bold mb-6 text-sky-400">From the little moments to the big wins…</h3>
+                <p class="text-xl text-slate-400 leading-relaxed font-light">
+                    You’ve always been that guy. The one who shows up, the one who leads. 
+                    I’m incredibly proud to call you my brother.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-32 px-6 text-center bg-gradient-to-b from-transparent to-indigo-950/40">
+             <div class="reveal mb-12 flex justify-center">
+                 <img src="harry3.webp" alt="Henry" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full border-4 border-sky-500 shadow-[0_0_30px_rgba(14,165,233,0.4)]">
+             </div>
+            <div class="reveal max-w-3xl mx-auto">
+                <h2 class="text-teal-400 text-sm tracking-[0.6em] mb-8 font-bold uppercase text-glow">A Brother's Prayer</h2>
+                <p class="text-2xl md:text-4xl font-light leading-snug text-white">
+                    I pray this new age brings you <span class="text-sky-400 font-bold">peace, growth, and happiness</span> beyond expectations. <br><br>
+                    May every door you knock on open, and may God guide every step you take towards success.
+                </p>
+            </div>
+        </section>
+
+        <section id="final" class="h-screen flex flex-col items-center justify-center relative overflow-hidden bg-black">
+            <div id="rocket" class="text-8xl mb-8 cursor-default filter drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">🚀</div>
+            <div class="reveal text-center z-10">
+                <h1 class="text-5xl md:text-7xl font-black mb-4">Happy Birthday <br><span class="text-sky-400">Harrytechdigital</span> 🚀💙</h1>
+                <p class="text-xl text-slate-400 mb-10 tracking-widest uppercase">Keep winning, keep shining big bro!</p>
+                <button onclick="location.reload()" class="px-8 py-3 glass rounded-full hover:bg-white/10 transition-all font-semibold border-white/20">Replay Surprise 🔁</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        function createParticles() {
+            const container = document.getElementById('particleContainer');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 4 + 'px';
+                particle.style.width = size;
+                particle.style.height = size;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        const startBtn = document.getElementById('startBtn');
+        const landing = document.getElementById('landing');
+        const mainContent = document.getElementById('mainContent');
+        const music = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+
+        startBtn.addEventListener('click', () => {
+            // Play ego.mp3
+            music.play().catch(e => console.log("Audio requires interaction"));
+            musicControl.classList.remove('hidden');
+
+            gsap.to(landing, {
+                opacity: 0,
+                y: -100,
+                duration: 1.5,
+                ease: "power4.inOut",
+                onComplete: () => {
+                    landing.style.display = 'none';
+                    mainContent.classList.remove('hidden');
+                    window.scrollTo(0,0);
+                    initAnimations();
+                }
+            });
+        });
+
+        function initAnimations() {
+            gsap.utils.toArray('.reveal').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                    },
+                    y: 60,
+                    opacity: 0,
+                    scale: 0.95,
+                    duration: 1.5,
+                    ease: "power3.out"
+                });
+            });
+
+            gsap.to("#rocket", {
+                scrollTrigger: {
+                    trigger: "#final",
+                    start: "top center",
+                    onEnter: () => {
+                        gsap.to("#rocket", { 
+                            y: -window.innerHeight - 200, 
+                            x: 50,
+                            duration: 2.5, 
+                            ease: "power2.in",
+                            onComplete: triggerConfetti
+                        });
+                    }
+                }
+            });
+        }
+
+        function triggerConfetti() {
+            const end = Date.now() + (3 * 1000);
+            const colors = ['#0ea5e9', '#2dd4bf', '#ffffff'];
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        musicControl.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                document.getElementById('musicIcon').innerText = "🎵";
+            } else {
+                music.pause();
+                document.getElementById('musicIcon').innerText = "🔇";
+            }
+        });
+    </script>
+</body>
+  </html>
+  
